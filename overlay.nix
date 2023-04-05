@@ -1,16 +1,13 @@
 inputs: final: prev: with final;
 {
 
-  mypython = python310.withPackages (p: with p; [
-    python-lsp-server
+  mypython = with python310Packages; [
     flake8
     black
 
-    numpy
     pandas
-    matplotlib
-    scikit-learn
-    jupyterlab
-  ]);
+    requests
+    beautifulsoup4
+  ];
 
 }

@@ -15,20 +15,18 @@
                   (import ./overlay.nix inputs)
                 ];
     } // flake-utils.lib.eachDefaultSystem (system:
-
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {};
-          overlays = [ self.overlay ];
+    let
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {};
+        overlays = [ self.overlay ];
+      };
+    in {
+      devShells = {
+        default = import ./develop.nix {
+          inherit pkgs;
         };
-      in {
-        devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [
-                          mypython
-                        ];
-        };
-      }
-
-    );
+      };
+    }
+  );
 }
