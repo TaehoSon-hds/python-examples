@@ -1,7 +1,7 @@
-inputs: final: prev: with final;
+final: prev: with final;
 {
 
-  mypython = with python310Packages; [
+  mypython = with prev.python310Packages; [
     flake8
     black
 

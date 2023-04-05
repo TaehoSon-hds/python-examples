@@ -12,7 +12,7 @@
     inputs@{ self, nixpkgs, flake-utils, ... }:
     {
       overlay = nixpkgs.lib.composeManyExtensions [
-                  (import ./overlay.nix inputs)
+                  (import ./overlay.nix)
                 ];
     } // flake-utils.lib.eachDefaultSystem (system:
     let
